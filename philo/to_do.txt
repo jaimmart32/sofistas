@@ -1,0 +1,16 @@
+· Que los filosofos coman cogiendo tenedores(implementar mutex, lock 
+tenedores para simular la imposibilidad de utilizarlo mientras un 
+filo lo tenga "agarrado")
+
+· Que cuando un filo haya muerto no se imprima nada mas tras 
+anunciar su muerte.
+
+· Darles una ventaja de tiempo a los impares para evitar deadlocks.
+
+· Cerciorarse de que los filos no "hablan entre ellos".
+
+· Crear mutex para lockear los printf y evitar que se superpongan.
+
+. Crear mutex para la flag en sim_data que indique que un filo murió 
+y se debe de terminar la simulación inmediatamente ya que seria una 
+variable a la cual accedden varios filos a la vez.
