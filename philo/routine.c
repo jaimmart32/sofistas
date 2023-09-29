@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:49:41 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/09/29 12:13:32 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:57:12 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,19 @@ void	ft_eat(t_philo *philo)
 {
 	long	curr_time;
 
+	pthread_mutex_lock(&philo->sim_data->forks[philo->left]);
+	curr_time = current_time() - philo->sim_data->start_time;
+	printf("%li philo %i has taken a fork\n", curr_time, philo->seat);
+	pthread_mutex_lock(&philo->sim_data->forks[philo->right]);
+	curr_time = current_time() - philo->sim_data->start_time;
+	printf("%li philo %i has taken a fork\n", curr_time, philo->seat);
 	curr_time = current_time() - philo->sim_data->start_time;
 	printf("%li philo %i is eating\n", curr_time, philo->seat);
 	ft_msleep(philo->sim_data->to_eat);
-	philo->to_live += philo->sim_data->to_die;
 	philo->n_meals++;
+	philo->to_live += philo->sim_data->to_die;
+	pthread_mutex_unlock(&philo->sim_data->forks[philo->left]);
+	pthread_mutex_unlock(&philo->sim_data->forks[philo->right]);
 }
 
 void	ft_sleep(t_philo *philo)

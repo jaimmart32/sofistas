@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:44 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/09/29 12:08:15 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:10:17 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_simu	*init_simu(char **av)
 	if (av[5])
 		sim_data->n_meals = ft_atoi(av[5]);
 	sim_data->start_time = current_time();
+	sim_data->forks = malloc(sizeof(pthread_mutex_t) * sim_data->n_philos);
+	if (sim_data->forks == NULL)
+		return (free(sim_data), NULL);
 	return (sim_data);
 }
 
@@ -44,6 +47,11 @@ t_philo	*init_philos(t_simu *sim_data)
 		philos[i].seat = i + 1;
 		philos[i].n_meals = 0;
 		philos[i].to_live = current_time() + sim_data->to_die;
+		philos[i].left = i;
+		philos[i].right = i + 1;
+		if (i + 1 == sim_data->n_philos)
+			philos[i].right = 0;
+		pthread_mutex_init(sim_data->forks + i, NULL);
 		philos[i].sim_data = sim_data;
 	}
 	return (philos);
@@ -91,5 +99,6 @@ int	main(int ac, char **av)
 	if (create_join_threads(sim_data))
 		return (1);
 	printf("Asi es la vida tete\n");
+	free_for_all(sim_data);
 	return (0);
 }
