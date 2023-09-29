@@ -14,3 +14,5 @@ anunciar su muerte.
 . Crear mutex para la flag en sim_data que indique que un filo murió 
 y se debe de terminar la simulación inmediatamente ya que seria una 
 variable a la cual accedden varios filos a la vez.
+
+probando,probando
