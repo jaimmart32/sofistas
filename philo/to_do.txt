@@ -16,3 +16,12 @@ y se debe de terminar la simulación inmediatamente ya que seria una
 variable a la cual accedden varios filos a la vez.
 
 probando,probando
+
+como gestiono si hay impares que el ultimo coma?
+Es normal que alguno coma mas de las veces que tiene que comer?
+
+mutex para las variables compartidas(end_simu, fin_meals) y para
+los printfs ya que comparten el stdout.
+
+Porque poner mutex en philo->to_live si es una variable personal de
+cada philo? y de philo->n_meals?

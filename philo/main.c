@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:44 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/09/29 16:10:17 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:49:15 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_simu	*init_simu(char **av)
 	sim_data->n_meals = -42;
 	if (av[5])
 		sim_data->n_meals = ft_atoi(av[5]);
+	sim_data->fin_meals = 0;
+	sim_data->end_simu = 0;
 	sim_data->start_time = current_time();
 	sim_data->forks = malloc(sizeof(pthread_mutex_t) * sim_data->n_philos);
 	if (sim_data->forks == NULL)
@@ -61,6 +63,10 @@ int	create_join_threads(t_simu *sim_data)
 {
 	int	i;
 
+	if (pthread_create(&sim_data->death_tid, NULL, &check_death,
+			(void *)sim_data))
+		return (1);
+	pthread_detach(sim_data->death_tid);
 	i = 0;
 	while (i < sim_data->n_philos)
 	{

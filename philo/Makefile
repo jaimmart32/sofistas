@@ -6,14 +6,14 @@
 #    By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 11:30:37 by jaimmart          #+#    #+#              #
-#    Updated: 2023/09/29 16:09:48 by jaimmart         ###   ########.fr        #
+#    Updated: 2023/10/02 16:02:46 by jaimmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -pthread #-g3 -fsanitize=thread
 
 RM = rm -rf
 
