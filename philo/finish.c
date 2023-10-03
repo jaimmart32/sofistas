@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 16:03:54 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/10/02 17:47:56 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:28:59 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	print_msg(long time, int msg, t_philo *philo)
 	t_simu	*sim_data;
 
 	sim_data = philo->sim_data;
+	if (!sim_data->end_simu && msg == DEATH_MSG)
+		printf("%li philo %i died\n", time, philo->seat);
 	if (check_end(philo))
 		return ;
 	if (!sim_data->end_simu && msg == FORK_MSG)
@@ -27,8 +29,6 @@ void	print_msg(long time, int msg, t_philo *philo)
 		printf("%li philo %i is sleeping\n", time, philo->seat);
 	if (!sim_data->end_simu && msg == THINK_MSG)
 		printf("%li philo %i is thinking\n", time, philo->seat);
-	if (!sim_data->end_simu && msg == DEATH_MSG)
-		printf("%li philo %i died\n", time, philo->seat);
 }
 
 /*Destroy(free) mutex, free forks, philos and sim_data*/

@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:44 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/10/02 16:49:15 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:11:10 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	create_join_threads(t_simu *sim_data)
 {
 	int	i;
 
+	if (sim_data->n_philos == 1)
+		return (kill_lonely_philo(sim_data), 0);
 	if (pthread_create(&sim_data->death_tid, NULL, &check_death,
 			(void *)sim_data))
 		return (1);

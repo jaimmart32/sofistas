@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:52:40 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/10/02 16:42:10 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:07:38 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_simu
 int		ft_atoi(const char *str);
 int		check_args(int ac, char **av);
 /*	routine.c	*/
+void	kill_lonely_philo(t_simu *sim_data);
 void	*routine(void *arg);
 /*	time.c	*/
 void	ft_msleep(long time_in_ms);

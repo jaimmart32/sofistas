@@ -24,4 +24,4 @@ mutex para las variables compartidas(end_simu, fin_meals) y para
 los printfs ya que comparten el stdout.
 
 Porque poner mutex en philo->to_live si es una variable personal de
-cada philo? y de philo->n_meals?
+cada philo? y de philo->n_meals? Por que el hilo de muerte accede.

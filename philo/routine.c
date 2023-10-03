@@ -6,11 +6,22 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:49:41 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/10/02 17:30:31 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:07:04 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	kill_lonely_philo(t_simu *sim_data)
+{
+	long	curr_time;
+
+	curr_time = current_time() - sim_data->start_time;
+	print_msg(curr_time, FORK_MSG, &sim_data->philos[0]);
+	ft_msleep(sim_data->to_die);
+	curr_time = current_time() - sim_data->start_time;
+	print_msg(curr_time, DEATH_MSG, &sim_data->philos[0]);
+}
 
 void	ft_eat(t_philo *philo)
 {
