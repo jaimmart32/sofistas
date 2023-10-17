@@ -6,7 +6,7 @@
 /*   By: jaimmart <jaimmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 11:43:44 by jaimmart          #+#    #+#             */
-/*   Updated: 2023/10/04 16:20:33 by jaimmart         ###   ########.fr       */
+/*   Updated: 2023/10/16 12:28:16 by jaimmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,10 @@ int	main(int ac, char **av)
 	t_philo	*philos;
 
 	if (ac < 5 || ac > 6)
-		printf("Invalid number of arguments\n");
+		return (printf("Invalid number of arguments\n"), 1);
 	if (!check_args(ac, av))
 		return (1);
 	sim_data = init_simu(av);
-	printf("start time = %li miliseconds\n", sim_data->start_time);
 	if (!sim_data)
 		return (1);
 	philos = init_philos(sim_data);
